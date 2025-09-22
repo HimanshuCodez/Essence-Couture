@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const slides = [
     "https://imgs.search.brave.com/JZLMs1CuNq_UnJiXSoTcJfYXisr13k6VtCcHANJ372o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA1/ODYvOTIwNy81NzAz/L2ZpbGVzL25hdnJh/dHJpLXNwZWNpYWwu/anBnP3Y9MTc0MzE1/ODA3MQ",
-    "https://wforwoman.com/cdn/shop/files/end_of_season_sale_banner.jpg?v=1749802725&width=1500",
-    "https://wishfulbyw.com/cdn/shop/files/banner_copy_4.jpg?v=1749821233&width=1500",
-    "https://wishfulbyw.com/cdn/shop/files/banner_6.jpg?v=1730876675&width=1500",
-    "https://shopforaurelia.com/cdn/shop/files/Aurelia-01.jpg?v=1746185938&width=1500",
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,7 +12,9 @@ const Hero = () => {
   const goToSlide = (index) => {
     if (sliderRef.current) {
       const slideWidth = sliderRef.current.clientWidth;
-      sliderRef.current.style.transform = `translateX(-${index * slideWidth}px)`;
+      sliderRef.current.style.transform = `translateX(-${
+        index * slideWidth
+      }px)`;
     }
     setCurrentSlide(index);
   };
@@ -39,12 +38,21 @@ const Hero = () => {
           ref={sliderRef}
         >
           {slides.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`Slide ${i + 1}`}
-              className="w-screen h-full object-cover flex-shrink-0"
-            />
+            <div key={i} className="w-screen h-full flex-shrink-0 relative">
+              <img
+                src={src}
+                alt={`Slide ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white bg-black bg-opacity-40">
+                <h1 className="text-4xl md:text-6xl ">ESSENCE COUTURE</h1>
+                <Link to="/collection">
+                  <button className="mt-4 px-6 py-2 md:px-8 md:py-3 text-lg border border-white text-white bg-transparent  hover:bg-white hover:text-black transition">
+                    Shop Now
+                  </button>
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
       </div>
