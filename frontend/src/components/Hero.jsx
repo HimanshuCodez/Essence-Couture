@@ -42,7 +42,7 @@ const Hero = () => {
               <img
                 src={src}
                 alt={`Slide ${i + 1}`}
-                className="w-full h-full object-cover "
+                className="w-full h-full object-contain sm:object-cover"
               />
               <div className="absolute inset-0 flex right-16 flex-col justify-center items-center text-center text-white">
                 <h1 className="text-4xl md:text-5xl  ">ESSENCE COUTURE</h1>
