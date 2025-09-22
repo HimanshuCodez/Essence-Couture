@@ -60,7 +60,7 @@ const Navbar = () => {
     to="/about"
     className="flex flex-col items-center gap-1 group"
   >
-    <p className="transition-colors duration-200 group-hover:text-gray-900">ABOUT</p>
+    <p className="transition-colors duration-200 group-hover:text-gray-900">ABOUT US</p>
     <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
   </NavLink>
 
