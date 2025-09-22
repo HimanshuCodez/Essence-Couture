@@ -32,7 +32,7 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-screen h-[60vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden relative">
+      <div className="w-screen h-[30vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden relative">
         <div
           className="flex transition-transform duration-500 ease-in-out h-full"
           ref={sliderRef}
@@ -42,7 +42,7 @@ const Hero = () => {
               <img
                 src={src}
                 alt={`Slide ${i + 1}`}
-                className="w-full h-full object-contain sm:object-cover"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex right-16 flex-col justify-center items-center text-center text-white">
                 <h1 className="text-4xl md:text-5xl  ">ESSENCE COUTURE</h1>
