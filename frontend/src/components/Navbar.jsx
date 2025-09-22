@@ -17,33 +17,62 @@ const Navbar = () => {
     }
 
   return (
-    <div className='flex items-center justify-between py-1 font-medium'>
+    <div className='sticky top-0 z-50 bg-white flex items-center justify-between py-1 font-medium'>
       
       <Link to='/'>
   <img src={Essencelogo} className='w-20' alt="Essence Logo" />
 </Link>
 
 
-      <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
-        
-        <NavLink to='/' className='flex flex-col items-center gap-1'>
-            <p>HOME</p>
-            <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-        </NavLink>
-        <NavLink to='/collection' className='flex flex-col items-center gap-1'>
-            <p>COLLECTION</p>
-            <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-        </NavLink>
-        <NavLink to='/about' className='flex flex-col items-center gap-1'>
-            <p>ABOUT</p>
-            <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-        </NavLink>
-        <NavLink to='/contact' className='flex flex-col items-center gap-1'>
-            <p>CONTACT</p>
-            <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-        </NavLink>
+  <ul className="hidden sm:flex items-center justify-center gap-8 text-sm text-gray-700">
+  <NavLink
+    to="/"
+    className="flex flex-col items-center gap-1 group"
+  >
+    <p className="transition-colors duration-200 group-hover:text-gray-900">HOME</p>
+    <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+  </NavLink>
 
-      </ul>
+  <NavLink
+    to="/collection"
+    className="flex flex-col items-center gap-1 group"
+  >
+    <p className="transition-colors duration-200 group-hover:text-gray-900">NEW ARRIVALS</p>
+    <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+  </NavLink>
+
+  <NavLink
+    to="/collection"
+    className="flex flex-col items-center  text-2xl "
+  >
+    <span>ESSENCE </span><span >COUTURE</span>
+  </NavLink>
+
+  <NavLink
+    to="/collection"
+    className="flex flex-col items-center gap-1 group"
+  >
+    <p className="transition-colors duration-200 group-hover:text-gray-900">COLLECTION</p>
+    <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+  </NavLink>
+
+  <NavLink
+    to="/about"
+    className="flex flex-col items-center gap-1 group"
+  >
+    <p className="transition-colors duration-200 group-hover:text-gray-900">ABOUT</p>
+    <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+  </NavLink>
+
+  <NavLink
+    to="/contact"
+    className="flex flex-col items-center gap-1 group"
+  >
+    <p className="transition-colors duration-200 group-hover:text-gray-900">CONTACT</p>
+    <hr className="w-1/2 border-none h-[2px] bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+  </NavLink>
+</ul>
+
 
       <div className='flex items-center gap-6'>
             <img onClick={()=> { setShowSearch(true); navigate('/collection') }} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
@@ -75,8 +104,10 @@ const Navbar = () => {
                         <p>Back</p>
                     </div>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/'>HOME</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/collection'>NEW ARRIVALS</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/collection'>ESSENCE COUTURE</NavLink>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/about'>ABOUT US</NavLink>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/contact'>CONTACT</NavLink>
                 </div>
         </div>
