@@ -10,22 +10,24 @@ import { ShopContext } from "../context/ShopContext";
 const ProductCard = ({ item }) => {
   return (
     <Link to={`/product/${item._id}`} onClick={() => window.scrollTo(0, 0)} className="relative group overflow-hidden rounded-lg aspect-[3/4] block">
-      <Swiper
-        modules={[Pagination, Navigation]}
-        pagination={{ clickable: true }}
-        navigation
-        className="h-full w-full"
-      >
-        {item.image.map((src, i) => (
-          <SwiperSlide key={i}>
-            <img
-              src={src}
-              alt={`${item.name} view ${i + 1}`}
-              className="w-full h-full object-cover object-[center_30%]"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="h-full w-full" onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
+        <Swiper
+          modules={[Pagination, Navigation]}
+          pagination={{ clickable: true }}
+          navigation
+          className="h-full w-full"
+        >
+          {item.image.map((src, i) => (
+            <SwiperSlide key={i}>
+              <img
+                src={src}
+                alt={`${item.name} view ${i + 1}`}
+                className="w-full h-full object-cover object-[center_30%]"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 flex flex-col items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <p className="font-semibold text-lg">{item.name}</p>
         <p className="text-sm">{item.price}</p>
