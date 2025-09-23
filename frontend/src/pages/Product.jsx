@@ -78,6 +78,28 @@ const Product = () => {
         </div>
       </div>
 
+      {/* ---------- Product Details ------------- */}
+      {(productData.styleCode || productData.length || productData.breadth || productData.color || productData.fabric || productData.pattern || productData.sleeveStyle || productData.sleeveLength || productData.neck || productData.dressType || productData.countryOfOrigin || productData.manufacturer || productData.hsn) &&
+        <div className='mt-12'>
+          <h2 className='text-xl font-semibold border-b pb-2'>Product Details</h2>
+          <div className='mt-4 grid grid-cols-2 gap-x-8 gap-y-2 text-gray-700'>
+            {productData.styleCode && <p><strong>Style Code:</strong> {productData.styleCode}</p>}
+            {productData.length && <p><strong>Length:</strong> {productData.length}</p>}
+            {productData.breadth && <p><strong>Breadth:</strong> {productData.breadth}</p>}
+            {productData.color && <p><strong>Color:</strong> {productData.color}</p>}
+            {productData.fabric && <p><strong>Fabric:</strong> {productData.fabric}</p>}
+            {productData.pattern && <p><strong>Pattern:</strong> {productData.pattern}</p>}
+            {productData.sleeveStyle && <p><strong>Sleeve Style:</strong> {productData.sleeveStyle}</p>}
+            {productData.sleeveLength && <p><strong>Sleeve Length:</strong> {productData.sleeveLength}</p>}
+            {productData.neck && <p><strong>Neck:</strong> {productData.neck}</p>}
+            {productData.dressType && <p><strong>Dress Type:</strong> {productData.dressType}</p>}
+            {productData.countryOfOrigin && <p><strong>Country of Origin:</strong> {productData.countryOfOrigin}</p>}
+            {productData.manufacturer && <p><strong>Manufacturer:</strong> {productData.manufacturer}</p>}
+            {productData.hsn && <p><strong>HSN:</strong> {productData.hsn}</p>}
+          </div>
+        </div>
+      }
+
       {/* ---------- Description & Review Section ------------- */}
       <div className='mt-20'>
         <div className='flex'>

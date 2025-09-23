@@ -19,6 +19,20 @@ const Add = ({token}) => {
    const [bestseller, setBestseller] = useState(false);
    const [sizes, setSizes] = useState([]);
 
+   const [length, setLength] = useState("");
+   const [breadth, setBreadth] = useState("");
+   const [dressType, setDressType] = useState("");
+   const [styleCode, setStyleCode] = useState("");
+   const [countryOfOrigin, setCountryOfOrigin] = useState("");
+   const [manufacturer, setManufacturer] = useState("");
+   const [color, setColor] = useState("");
+   const [fabric, setFabric] = useState("");
+   const [pattern, setPattern] = useState("");
+   const [sleeveStyle, setSleeveStyle] = useState("");
+   const [sleeveLength, setSleeveLength] = useState("");
+   const [neck, setNeck] = useState("");
+   const [hsn, setHsn] = useState("");
+
    const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -33,6 +47,20 @@ const Add = ({token}) => {
       formData.append("subCategory",subCategory)
       formData.append("bestseller",bestseller)
       formData.append("sizes",JSON.stringify(sizes))
+
+      formData.append("length",length)
+      formData.append("breadth",breadth)
+      formData.append("dressType",dressType)
+      formData.append("styleCode",styleCode)
+      formData.append("countryOfOrigin",countryOfOrigin)
+      formData.append("manufacturer",manufacturer)
+      formData.append("color",color)
+      formData.append("fabric",fabric)
+      formData.append("pattern",pattern)
+      formData.append("sleeveStyle",sleeveStyle)
+      formData.append("sleeveLength",sleeveLength)
+      formData.append("neck",neck)
+      formData.append("hsn",hsn)
 
       image1 && formData.append("image1",image1)
       image2 && formData.append("image2",image2)
@@ -50,6 +78,19 @@ const Add = ({token}) => {
         setImage3(false)
         setImage4(false)
         setPrice('')
+        setLength('')
+        setBreadth('')
+        setDressType('')
+        setStyleCode('')
+        setCountryOfOrigin('')
+        setManufacturer('')
+        setColor('')
+        setFabric('')
+        setPattern('')
+        setSleeveStyle('')
+        setSleeveLength('')
+        setNeck('')
+        setHsn('')
       } else {
         toast.error(response.data.message)
       }
@@ -120,6 +161,61 @@ const Add = ({token}) => {
               <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
             </div>
 
+        </div>
+
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-5xl'>
+          <div className='w-full'>
+            <p className='mb-2'>Length</p>
+            <input onChange={(e)=>setLength(e.target.value)} value={length} className='w-full px-3 py-2' type="text" placeholder='shirt- 32cm, bottom-39' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Breadth</p>
+            <input onChange={(e)=>setBreadth(e.target.value)} value={breadth} className='w-full px-3 py-2' type="text" placeholder='40( size L)' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Dress Type</p>
+            <input onChange={(e)=>setDressType(e.target.value)} value={dressType} className='w-full px-3 py-2' type="text" placeholder='co-ord set' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Style Code</p>
+            <input onChange={(e)=>setStyleCode(e.target.value)} value={styleCode} className='w-full px-3 py-2' type="text" placeholder='s-110' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Country of Origin</p>
+            <input onChange={(e)=>setCountryOfOrigin(e.target.value)} value={countryOfOrigin} className='w-full px-3 py-2' type="text" placeholder='India' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Manufacturer</p>
+            <input onChange={(e)=>setManufacturer(e.target.value)} value={manufacturer} className='w-full px-3 py-2' type="text" placeholder='King style knitwear' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Color</p>
+            <input onChange={(e)=>setColor(e.target.value)} value={color} className='w-full px-3 py-2' type="text" placeholder='bottle green' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Fabric</p>
+            <input onChange={(e)=>setFabric(e.target.value)} value={fabric} className='w-full px-3 py-2' type="text" placeholder='cotton linen' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Pattern</p>
+            <input onChange={(e)=>setPattern(e.target.value)} value={pattern} className='w-full px-3 py-2' type="text" placeholder='indo western' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Sleeve Style</p>
+            <input onChange={(e)=>setSleeveStyle(e.target.value)} value={sleeveStyle} className='w-full px-3 py-2' type="text" placeholder='straight with cutwork' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Sleeve Length</p>
+            <input onChange={(e)=>setSleeveLength(e.target.value)} value={sleeveLength} className='w-full px-3 py-2' type="text" placeholder='19.5' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>Neck</p>
+            <input onChange={(e)=>setNeck(e.target.value)} value={neck} className='w-full px-3 py-2' type="text" placeholder='round' />
+          </div>
+          <div className='w-full'>
+            <p className='mb-2'>HSN</p>
+            <input onChange={(e)=>setHsn(e.target.value)} value={hsn} className='w-full px-3 py-2' type="text" placeholder='6204' />
+          </div>
         </div>
 
         <div>

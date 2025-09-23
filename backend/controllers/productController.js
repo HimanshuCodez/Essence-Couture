@@ -5,7 +5,7 @@ import productModel from "../models/productModel.js"
 const addProduct = async (req, res) => {
     try {
 
-        const { name, description, price, category, subCategory, sizes, bestseller } = req.body
+        const { name, description, price, category, subCategory, sizes, bestseller, length, breadth, dressType, styleCode, countryOfOrigin, manufacturer, color, fabric, pattern, sleeveStyle, sleeveLength, neck, hsn } = req.body
 
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
@@ -30,7 +30,20 @@ const addProduct = async (req, res) => {
             bestseller: bestseller === "true" ? true : false,
             sizes: JSON.parse(sizes),
             image: imagesUrl,
-            date: Date.now()
+            date: Date.now(),
+            length,
+            breadth,
+            dressType,
+            styleCode,
+            countryOfOrigin,
+            manufacturer,
+            color,
+            fabric,
+            pattern,
+            sleeveStyle,
+            sleeveLength,
+            neck,
+            hsn
         }
 
         console.log(productData);
@@ -86,4 +99,45 @@ const singleProduct = async (req, res) => {
     }
 }
 
-export { listProducts, addProduct, removeProduct, singleProduct }
+// function for updating product
+const updateProduct = async (req, res) => {
+    try {
+        const { productId, name, description, price, category, subCategory, sizes, bestseller, length, breadth, dressType, styleCode, countryOfOrigin, manufacturer, color, fabric, pattern, sleeveStyle, sleeveLength, neck, hsn } = req.body;
+
+        const product = await productModel.findById(productId);
+
+        if (!product) {
+            return res.json({ success: false, message: "Product not found" });
+        }
+
+        product.name = name;
+        product.description = description;
+        product.price = price;
+        product.category = category;
+        product.subCategory = subCategory;
+        product.sizes = JSON.parse(sizes);
+        product.bestseller = bestseller;
+        product.length = length;
+        product.breadth = breadth;
+        product.dressType = dressType;
+        product.styleCode = styleCode;
+        product.countryOfOrigin = countryOfOrigin;
+        product.manufacturer = manufacturer;
+        product.color = color;
+        product.fabric = fabric;
+        product.pattern = pattern;
+        product.sleeveStyle = sleeveStyle;
+        product.sleeveLength = sleeveLength;
+        product.neck = neck;
+        product.hsn = hsn;
+
+        await product.save();
+
+        res.json({ success: true, message: "Product updated" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+};
+
+export { listProducts, addProduct, removeProduct, singleProduct, updateProduct }
