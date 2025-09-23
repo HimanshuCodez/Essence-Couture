@@ -8,9 +8,18 @@ import { Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
 const ProductCard = ({ item }) => {
+
+  const handleCardClick = (e) => {
+    if (e.target.closest('.swiper-button-next') || e.target.closest('.swiper-button-prev')) {
+      e.preventDefault();
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
-    <Link to={`/product/${item._id}`} onClick={() => window.scrollTo(0, 0)} className="relative group overflow-hidden rounded-lg aspect-[3/4] block">
-      <div className="h-full w-full" onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}>
+    <Link to={`/product/${item._id}`} onClick={handleCardClick} className="relative group overflow-hidden rounded-lg aspect-[3/4] block">
+      <div className="h-full w-full">
         <Swiper
           modules={[Pagination, Navigation]}
           pagination={{ clickable: true }}
