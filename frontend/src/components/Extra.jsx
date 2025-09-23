@@ -47,25 +47,24 @@ const products = {
   ],
 };
 
-export default function Collections() {
+export default function Extra() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 mt-7 md:grid-cols-2 gap-8">
       {/* Featured Collections */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">FEATURED COLLECTIONS</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">FEATURED COLLECTIONS</h2>
         <div className="grid grid-cols-2 gap-6">
           {products.featured.map((item, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group overflow-hidden rounded-lg">
              <img
-  src={item.img}
-  alt={item.title}
-  className="w-full h-[320px] object-cover object-top rounded-lg"
-/>
-
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-3 flex flex-col items-start">
-                <p className="font-semibold">{item.title}</p>
+                src={item.img}
+                alt={item.title}
+                className="w-full h-[320px] object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 flex flex-col items-center text-center">
+                <p className="font-semibold text-lg">{item.title}</p>
                 <p className="text-sm">{item.price}</p>
-                <button className="mt-2 text-xs uppercase bg-white text-black px-3 py-1 rounded-md">
+                <button className="mt-3 text-xs uppercase bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-colors duration-300">
                   Shop Now
                 </button>
               </div>
@@ -76,19 +75,19 @@ export default function Collections() {
 
       {/* Best-Sellers */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">BEST-SELLERS</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center">BEST-SELLERS</h2>
         <div className="grid grid-cols-2 gap-6">
           {products.bestSellers.map((item, index) => (
-            <div key={index} className="relative group">
+            <div key={index} className="relative group overflow-hidden rounded-lg">
                 <img
-  src={item.img}
-  alt={item.title}
-  className="w-full h-[320px] object-cover object-top rounded-lg"
-/>
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-3 flex flex-col items-start">
-                <p className="font-semibold">{item.title}</p>
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-[320px] object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 flex flex-col items-center text-center">
+                <p className="font-semibold text-lg">{item.title}</p>
                 <p className="text-sm">{item.price}</p>
-                <button className="mt-2 text-xs uppercase bg-white text-black px-3 py-1 rounded-md">
+                <button className="mt-3 text-xs uppercase bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-colors duration-300">
                   Shop Now
                 </button>
               </div>
