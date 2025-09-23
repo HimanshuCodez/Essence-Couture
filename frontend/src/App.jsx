@@ -21,7 +21,7 @@ const App = () => {
   return (
     <div className='px-2 sm:px-[1vw] md:px-[1vw] lg:px-[1vw]'>
       <ToastContainer />
-      <Shipping/>
+      
       <Navbar />
       <SearchBar />
       <Routes>
