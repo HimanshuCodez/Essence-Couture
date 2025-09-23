@@ -190,9 +190,45 @@ const Navbar = () => {
                 navigate("/collection");
                 setVisible(false);
               }}
-              className="flex text-red-600 items-center gap-4 cursor-pointer"
+              className="flex items-center gap-4 cursor-pointer"
             >
-            <p
+              <img src={assets.search_icon} className="w-5" alt="Search" />
+              <p>Search</p>
+            </div>
+            <Link to="/cart" onClick={() => setVisible(false)} className="flex items-center gap-4">
+              <div className="relative">
+                <img src={assets.cart_icon} className="w-5 min-w-5" alt="Cart" />
+                <p className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]">
+                  {getCartCount()}
+                </p>
+              </div>
+              <p>Cart</p>
+            </Link>
+            <hr className="my-2" />
+            {token ? (
+              <div className="flex flex-col gap-4">
+                <div
+                  className="flex items-center gap-4 cursor-pointer"
+                  onClick={() => setVisible(false)}
+                >
+                  <img
+                    src={assets.profile_icon}
+                    className="w-5"
+                    alt="Profile"
+                  />
+                  <p>My Profile</p>
+                </div>
+                <div className="pl-9 flex flex-col gap-2">
+                  <p
+                    onClick={() => {
+                      navigate("/orders");
+                      setVisible(false);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    Orders
+                  </p>
+                  <p
                     onClick={() => {
                       logout();
                       setVisible(false);
@@ -201,11 +237,20 @@ const Navbar = () => {
                   >
                     Logout
                   </p>
-            </div>
-           
-              
-          
-            
+                </div>
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  navigate("/login");
+                  setVisible(false);
+                }}
+                className="flex items-center gap-4 cursor-pointer"
+              >
+                <img src={assets.profile_icon} className="w-5" alt="Login" />
+                <p>Login</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
