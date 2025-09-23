@@ -1,122 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
-
-// Note: The data structure now includes an array of images for each product.
-// I'm using placeholder URLs, which you can replace with your actual product images (front, back, side views, etc.).
-const products = {
-  featured: [
-    {
-      title: "SPRING EDIT",
-      price: "$169.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81Q-08a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81hA-3v-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "HANDLOOM WONDERS",
-      price: "$159.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "BRIDAL COLLECTION",
-      price: "$139.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81Q-08a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81hA-3v-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "BRIDAL COLLECTION",
-      price: "$129.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-      ],
-    },
-  ],
-  bestSellers: [
-    {
-      title: "FESTIVE CHARM",
-      price: "$79.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81Q-08a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81hA-3v-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "FESTIVE CHARM",
-      price: "$79.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "Floral Elegance",
-      price: "$99.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81Q-08a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81hA-3v-p-L._SY741_.jpg",
-      ],
-    },
-    {
-      title: "Motifs & Colors",
-      price: "$79.00",
-      images: [
-        "https://res.cloudinary.com/dsyc2fqmg/image/upload/v1758597916/kivtzqwpnatjeraiop8c.png",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-        "https://m.media-amazon.com/images/I/81-c-3a-p-L._SY741_.jpg",
-      ],
-    },
-  ],
-};
+import { Link } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 const ProductCard = ({ item }) => {
   return (
-    <div className="relative group overflow-hidden rounded-lg aspect-[3/4]">
+    <Link to={`/product/${item._id}`} onClick={() => window.scrollTo(0, 0)} className="relative group overflow-hidden rounded-lg aspect-[3/4] block">
       <Swiper
         modules={[Pagination, Navigation]}
         pagination={{ clickable: true }}
         navigation
         className="h-full w-full"
       >
-        {item.images.map((src, i) => (
+        {item.image.map((src, i) => (
           <SwiperSlide key={i}>
             <img
               src={src}
-              alt={`${item.title} view ${i + 1}`}
+              alt={`${item.name} view ${i + 1}`}
               className="w-full h-full object-cover object-top"
             />
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 flex flex-col items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <p className="font-semibold text-lg">{item.title}</p>
+        <p className="font-semibold text-lg">{item.name}</p>
         <p className="text-sm">{item.price}</p>
         <button className="mt-3 text-xs uppercase bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-colors duration-300">
           Shop Now
         </button>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export default function Extra() {
+
+  const { products } = useContext(ShopContext);
+
+  const featuredProducts = products.filter((item) => item.category === "Women");
+  const bestSellerProducts = products.filter((item) => item.bestseller === true);
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
         <style>{`
@@ -145,8 +72,8 @@ export default function Extra() {
       <div>
         <h2 className="text-2xl font-semibold mb-6 text-center">FEATURED COLLECTIONS</h2>
         <div className="grid grid-cols-2 gap-6">
-          {products.featured.map((item, index) => (
-            <ProductCard key={index} item={item} />
+          {featuredProducts.map((item) => (
+            <ProductCard key={item._id} item={item} />
           ))}
         </div>
       </div>
@@ -155,8 +82,8 @@ export default function Extra() {
       <div>
         <h2 className="text-2xl font-semibold mb-6 text-center">BEST-SELLERS</h2>
         <div className="grid grid-cols-2 gap-6">
-          {products.bestSellers.map((item, index) => (
-             <ProductCard key={index} item={item} />
+          {bestSellerProducts.map((item) => (
+             <ProductCard key={item._id} item={item} />
           ))}
         </div>
       </div>
