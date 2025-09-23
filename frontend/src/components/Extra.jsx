@@ -21,7 +21,7 @@ const ProductCard = ({ item }) => {
             <img
               src={src}
               alt={`${item.name} view ${i + 1}`}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[center_30%]"
             />
           </SwiperSlide>
         ))}
