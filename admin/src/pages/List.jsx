@@ -54,11 +54,12 @@ const List = ({ token }) => {
 
         {/* ------- List Table Title ---------- */}
 
-        <div className='hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] items-center py-1 px-2 border bg-gray-100 text-sm'>
+        <div className='hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr_1fr] items-center py-1 px-2 border bg-gray-100 text-sm'>
           <b>Image</b>
           <b>Name</b>
           <b>Category</b>
           <b>Price</b>
+          <b>MRP</b>
           <b className='text-center'>Edit</b>
           <b className='text-center'>Action</b>
         </div>
@@ -72,6 +73,7 @@ const List = ({ token }) => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{currency}{item.price}</p>
+              <p>{currency}{item.mrp}</p>
               <Link to={`/update/${item._id}`} className='text-center cursor-pointer text-lg'>Edit</Link>
               <p onClick={()=>removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
             </div>

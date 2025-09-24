@@ -11,6 +11,7 @@ const Update = ({ token }) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
+    const [mrp, setMrp] = useState("");
     const [category, setCategory] = useState("Men");
     const [subCategory, setSubCategory] = useState("Topwear");
     const [bestseller, setBestseller] = useState(false);
@@ -38,6 +39,7 @@ const Update = ({ token }) => {
                     setName(product.name);
                     setDescription(product.description);
                     setPrice(product.price);
+                    setMrp(product.mrp || "");
                     setCategory(product.category);
                     setSubCategory(product.subCategory);
                     setBestseller(product.bestseller);
@@ -73,6 +75,7 @@ const Update = ({ token }) => {
                 name,
                 description,
                 price,
+                mrp,
                 category,
                 subCategory,
                 bestseller,
@@ -135,6 +138,10 @@ const Update = ({ token }) => {
                 <div>
                     <p className='mb-2'>Product Price</p>
                     <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
+                </div>
+                <div>
+                    <p className='mb-2'>Product MRP</p>
+                    <input onChange={(e) => setMrp(e.target.value)} value={mrp} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='45' />
                 </div>
             </div>
 
