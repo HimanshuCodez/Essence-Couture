@@ -63,6 +63,11 @@ const Product = () => {
             {productData.mrp && productData.mrp !== productData.price && (
               <p className='text-xl text-gray-500 line-through'>{currency}{productData.mrp}</p>
             )}
+            {productData.mrp && productData.mrp > productData.price && (
+              <p className='text-green-600 text-xl font-medium'>
+                ({currency}{(productData.mrp - productData.price).toFixed(2)} OFF) - {(((productData.mrp - productData.price) / productData.mrp) * 100).toFixed(0)}%
+              </p>
+            )}
           </div>
           <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
           <div className='flex flex-col gap-4 my-8'>
