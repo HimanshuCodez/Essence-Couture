@@ -3,14 +3,17 @@ import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import RelatedProducts from '../components/RelatedProducts';
+import ReviewForm from '../components/ReviewForm';
+import ReviewList from '../components/ReviewList';
 
 const Product = () => {
 
   const { productId } = useParams();
   const { products, currency ,addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
-  const [image, setImage] = useState('')
-  const [size,setSize] = useState('')
+  const [image, setImage] = useState('');
+  const [size,setSize] = useState('');
+  const [refreshReviews, setRefreshReviews] = useState(false);
 
   const fetchProductData = async () => {
 
@@ -114,12 +117,17 @@ const Product = () => {
       <div className='mt-20'>
         <div className='flex'>
           <b className='border px-5 py-3 text-sm'>Description</b>
-          <p className='border px-5 py-3 text-sm'>Reviews (122)</p>
+          <p className='border px-5 py-3 text-sm'>Reviews</p>
         </div>
         <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
          <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
-     
         </div>
+        {productData._id && (
+          <ReviewList productId={productData._id} refreshTrigger={refreshReviews} />
+        )}
+        {productData._id && (
+          <ReviewForm productId={productData._id} onReviewSubmitted={() => setRefreshReviews(prev => !prev)} />
+        )}
       </div>
 
       {/* --------- display related products ---------- */}
