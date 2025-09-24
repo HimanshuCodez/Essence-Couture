@@ -5,7 +5,7 @@ import productModel from "../models/productModel.js";
 const addReview = async (req, res) => {
     try {
         const { productId, rating, comment } = req.body;
-        const userId = req.userId; // Assuming userId is set by auth middleware
+        const userId = req.body.userId; // userId is set by auth middleware in req.body
 
         if (!userId) {
             return res.json({ success: false, message: "Not authorized, please login" });
