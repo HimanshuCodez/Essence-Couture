@@ -15,7 +15,7 @@ const Contact = () => {
         <img className='w-full md:max-w-[480px]' src={assets.contact_img} alt="" />
         <div className='flex flex-col justify-center items-start gap-6'>
           <p className='font-semibold text-xl text-gray-600'>Our Store</p>
-          <p className=' text-gray-500'>C5a/205 <br />Janakpuri Delhi 110042</p>
+          <p className=' text-gray-500'>C5a/205 <br />Janakpuri Delhi 110058</p>
           <p className=' text-gray-500'>Tel: 9958928568<br /> Email: rita@essencecouture.co.in</p>
           <p className='font-semibold text-xl text-gray-600'>Careers at Essence Couture</p>
           <p className=' text-gray-500'>Learn more about our teams and job openings.</p>
