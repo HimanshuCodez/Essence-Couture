@@ -14,6 +14,7 @@ const Add = ({token}) => {
    const [name, setName] = useState("");
    const [description, setDescription] = useState("");
    const [price, setPrice] = useState("");
+   const [mrp, setMrp] = useState("");
    const [category, setCategory] = useState("Men");
    const [subCategory, setSubCategory] = useState("Topwear");
    const [bestseller, setBestseller] = useState(false);
@@ -43,6 +44,7 @@ const Add = ({token}) => {
       formData.append("name",name)
       formData.append("description",description)
       formData.append("price",price)
+      formData.append("mrp",mrp)
       formData.append("category",category)
       formData.append("subCategory",subCategory)
       formData.append("bestseller",bestseller)
@@ -78,6 +80,7 @@ const Add = ({token}) => {
         setImage3(false)
         setImage4(false)
         setPrice('')
+        setMrp('')
         setLength('')
         setBreadth('')
         setDressType('')
@@ -157,7 +160,12 @@ const Add = ({token}) => {
             </div>
 
             <div>
-              <p className='mb-2'>Product Price</p>
+              <p className='mb-2'>MRP</p>
+              <input onChange={(e) => setMrp(e.target.value)} value={mrp} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='45' />
+            </div>
+
+            <div>
+              <p className='mb-2'>Selling Price</p>
               <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="Number" placeholder='25' />
             </div>
 
